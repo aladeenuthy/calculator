@@ -6,8 +6,6 @@ void main() {
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -99,6 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
         prevInput = '';
         setState(() {
           _finalResult = num2.substring(1);
+          
         });
       }
     }
@@ -129,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
           alignment: Alignment.center,
           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 15),
           decoration:
-              BoxDecoration(border: Border.all(width: 0, color: Colors.grey)),
+              BoxDecoration(border: Border.all(width: 1, color: Colors.grey)),
           child: Text(
             buttonText,
             style: const TextStyle(fontSize: 14),
@@ -144,6 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           title: const Text("Calculator"),
+          elevation: 0,
         ),
         body: Column(children: [
           const Spacer(),
@@ -152,8 +152,9 @@ class _MyHomePageState extends State<MyHomePage> {
             alignment: Alignment.centerRight,
             width: double.infinity,
             decoration: const BoxDecoration(
-                border: Border(top: BorderSide(color: Colors.grey, width: 0))),
-            child: Text(_finalResult),
+                border: Border(top: BorderSide(color: Colors.grey, width: 1),)
+                ),
+            child: Text((_finalResult.endsWith('.0') || _finalResult.endsWith('.00')) ? _finalResult.substring(0, _finalResult.indexOf('.')): _finalResult, style: const TextStyle(fontSize: 17, fontWeight: FontWeight.bold),),
           ),
           Row(
             children: [
